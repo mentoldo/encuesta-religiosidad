@@ -52,13 +52,9 @@ resumen_frases <- c("Creada por Dios\n, siempre =", "Evolución\n guiada \npor D
 
 referencia_frases <- cbind(names(resumen_tables$frases), texto_frases, resumen_frases)
 barplot(resumen_tables$frases, names = resumen_frases)
-
 barplot(table(religiosidad$se_considera))
-
 barplot(table(religiosidad$relacion_creencia_trebajo))
-
 barplot(table(religiosidad$practica_religion))
-
 barplot(table(religiosidad$que_religion))
 
 # Frecuencias
@@ -72,47 +68,39 @@ barplot(table(religiosidad$frecuencia_reza), names = names_frec_show)
 
 
 # Cruce de variables
-
 barplot(table(religiosidad$sexo, religiosidad$cree_en_dios),
         beside = TRUE, legend.text = TRUE, 
-        args.legend = list(x ='topright')
-)
+        args.legend = list(x ='topright'))
 
 barplot(table(religiosidad$desemp_cs_basicas, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_basicas, religiosidad$respecto_milagros), 1),
-                                                  beside = TRUE, legend.text = TRUE
-)
+                                                  beside = TRUE, legend.text = TRUE)
 
 barplot(table(religiosidad$desemp_cs_aplicadas, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_aplicadas, religiosidad$respecto_milagros), 1),
-        beside = TRUE, legend.text = TRUE
-)
+        beside = TRUE, legend.text = TRUE)
 
 barplot(table(religiosidad$desemp_cs_humanas, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_humanas, religiosidad$respecto_milagros), 1),
-        beside = TRUE, legend.text = TRUE
-)
+        beside = TRUE, legend.text = TRUE)
 
 barplot(table(religiosidad$desemp_cs_nat, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_nat, religiosidad$respecto_milagros), 1),
-        beside = TRUE, legend.text = TRUE
-)
+        beside = TRUE, legend.text = TRUE)
 
 barplot(table(religiosidad$desemp_cs_salud, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_salud, religiosidad$respecto_milagros), 1),
-        beside = TRUE, legend.text = TRUE
-)
+        beside = TRUE, legend.text = TRUE)
 
 barplot(table(religiosidad$desemp_cs_sociales, religiosidad$respecto_milagros),
         beside = TRUE, legend.text = TRUE)
 barplot(prop.table(table(religiosidad$desemp_cs_sociales, religiosidad$respecto_milagros), 1),
-        beside = TRUE, legend.text = TRUE
-)
+        beside = TRUE, legend.text = TRUE)
 
 
 
@@ -123,15 +111,13 @@ resumen_sexo <- ddply (religiosidad, "sexo", summarise,
                       MEDIA = round (mean(edad, na.rm = TRUE), 2),
                       SD = round (sd(edad, na.rm = TRUE),2),
                       N = length(edad),
-                      SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2)
-)
+                      SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2))
 
 resumen_cree_en_dios <- ddply (religiosidad, "cree_en_dios", summarise,
                                MEDIA = round (mean(edad, na.rm = TRUE), 2),
                                SD = round (sd(edad, na.rm = TRUE),2),
                                N = length(edad),
-                               SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2)
-)
+                               SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2))
 
 library(ggplot2)
 ggplot(resumen_cree_en_dios, aes(x=cree_en_dios, y=MEDIA)) + 
@@ -144,8 +130,7 @@ resumen_respecto_milagros <- ddply (religiosidad, c("respecto_milagros", "sexo")
                                    MEDIA = round (mean(edad, na.rm = TRUE), 2),
                                    SD = round (sd(edad, na.rm = TRUE),2),
                                    N = length(edad),
-                                   SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2)
-)
+                                   SE = round (sd(edad, na.rm = TRUE)/sqrt(length(edad)), 2))
 
                                    
 ggplot(resumen_respecto_milagros, aes(x=respecto_milagros, y=MEDIA, fill=sexo)) + 
